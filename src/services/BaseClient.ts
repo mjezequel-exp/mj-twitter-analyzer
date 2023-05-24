@@ -1,7 +1,7 @@
 import { settings } from "@/settings";
 import axios, { AxiosError } from "axios";
 import { scopes, msalInstance } from "./MsalService";
-import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from "axios";
 
 export class BaseClient {
     protected apiClient: AxiosInstance;
@@ -122,7 +122,7 @@ export class BaseClient {
         return (error as AxiosError).isAxiosError;
     }
 
-    private async requestInterceptor(request: AxiosRequestConfig) {
+    private async requestInterceptor(request: InternalAxiosRequestConfig) {
         const accessToken = await msalInstance.getAccessToken(scopes);
 
         // Add Authorization token
