@@ -122,7 +122,7 @@ export class BaseClient {
         return (error as AxiosError).isAxiosError;
     }
 
-    private async requestInterceptor(request: InternalAxiosRequestConfig) {
+    private async requestInterceptor(request: InternalAxiosRequestConfig): Promise<InternalAxiosRequestConfig> {
         const accessToken = await msalInstance.getAccessToken(scopes);
 
         // Add Authorization token
@@ -133,20 +133,20 @@ export class BaseClient {
         return Promise.resolve(request);
     }
 
-    private blobErrorResponseInterceptor(error: AxiosError) {
+    private blobErrorResponseInterceptor(error: AxiosError): Promise<AxiosError> {
         const contentType: string = error.response?.headers["content-type"]?.toLowerCase() ?? "";
         if (error.request.responseType === "blob" && contentType.includes("json")) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
 
-                reader.onload = () => {
+                reader.onload = (): void => {
                     if (error.response) {
                         error.response.data = JSON.parse(reader.result as string);
                         resolve(Promise.reject(error));
                     }
                 };
 
-                reader.onerror = () => reject(error);
+                reader.onerror = (): void => reject(error);
 
                 reader.readAsText(error.response?.data as Blob);
             });
@@ -155,7 +155,7 @@ export class BaseClient {
         return Promise.reject(error);
     }
 
-    private async errorResponseInterceptor(error: AxiosError) {
+    private async errorResponseInterceptor(error: AxiosError): Promise<AxiosError> {
         // If the user is unauthenticated, retry login
         if (error.response?.status === 401) {
             await msalInstance.getAccessToken(scopes);

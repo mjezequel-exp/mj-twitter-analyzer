@@ -7,12 +7,12 @@ const router = createRouter({
     routes: [
         {
             path: "/",
-            component: () => import(/* webpackChunkName: "layout" */ "@/views/LayoutView.vue"),
+            component: (): any => import("@/views/LayoutView.vue"),
             children: [
                 {
                     path: "",
                     name: RouteNames.home,
-                    component: () => import(/* webpackChunkName: "home" */ "@/views/HomeView.vue"),
+                    component: (): any => import("@/views/HomeView.vue"),
                 },
             ],
         },
@@ -23,12 +23,12 @@ const router = createRouter({
         {
             path: "/unauthorized",
             name: RouteNames.unauthorized,
-            component: () => import(/* webpackChunkName: "unauthorized" */ "@/views/errors/UnauthorizedView.vue"),
+            component: (): any => import("@/views/errors/UnauthorizedView.vue"),
         },
         {
             path: "/:pathMatch(.*)*",
             name: RouteNames.notFound,
-            component: () => import(/* webpackChunkName: "notFound" */ "@/views/errors/NotFoundView.vue"),
+            component: (): any => import("@/views/errors/NotFoundView.vue"),
         },
     ],
 });

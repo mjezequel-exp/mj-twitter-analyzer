@@ -1,0 +1,15 @@
+{
+    "extends": ["stylelint-config-recess-order", "stylelint-config-standard-scss", "stylelint-config-standard-vue/scss"],
+    "ignoreFiles": ["node_modules/"],
+    "overrides": [
+        {
+            "files": ["*.vue", "**/*.vue"],
+            "rules": {
+                "unit-allowed-list": ["%", "deg", "em", "fr", "px", "s", "vh", "vw"]
+            }
+        }
+    ],
+    "rules": {
+        "indentation": 4
+    }
+}
