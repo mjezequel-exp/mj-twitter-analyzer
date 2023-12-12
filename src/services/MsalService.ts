@@ -2,10 +2,6 @@ import * as msal from "@azure/msal-browser";
 import { settings } from "@/settings";
 
 export class MsalService extends msal.PublicClientApplication {
-    constructor(msalConfig: msal.Configuration) {
-        super(msalConfig);
-    }
-
     /** Login user from cache or by redirecting it */
     public async login(): Promise<boolean> {
         // Handle in case the current request is a redirection from auth

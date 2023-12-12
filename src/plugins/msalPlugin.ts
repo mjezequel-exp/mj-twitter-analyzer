@@ -1,7 +1,7 @@
 import { reactive } from "vue";
-import type { App } from "vue";
 import { EventMessageUtils, EventType, InteractionStatus, PublicClientApplication } from "@azure/msal-browser";
-import type { EventMessage, AccountInfo } from "@azure/msal-browser";
+import type { App } from "vue";
+import type { AccountInfo, EventMessage } from "@azure/msal-browser";
 
 type AccountIdentifiers = Partial<Pick<AccountInfo, "homeAccountId" | "localAccountId" | "username">>;
 
@@ -35,7 +35,7 @@ export const msalPlugin = {
 
         const state = reactive({
             instance: msalInstance,
-            inProgress: inProgress,
+            inProgress: inProgress as InteractionStatus,
             accounts: accounts,
         });
 
@@ -52,13 +52,13 @@ export const msalPlugin = {
                 case EventType.SSO_SILENT_FAILURE:
                 case EventType.LOGOUT_END:
                 case EventType.ACQUIRE_TOKEN_SUCCESS:
-                case EventType.ACQUIRE_TOKEN_FAILURE:
-                    // eslint-disable-next-line no-case-declarations
+                case EventType.ACQUIRE_TOKEN_FAILURE: {
                     const currentAccounts = msalInstance.getAllAccounts();
                     if (!accountArraysAreEqual(currentAccounts, state.accounts)) {
                         state.accounts = currentAccounts;
                     }
                     break;
+                }
             }
 
             const status = EventMessageUtils.getInteractionStatusFromEvent(message, state.inProgress);

@@ -6,6 +6,8 @@ import { RouteNames } from "./RouteNames";
 export const authGuard: NavigationGuard = async (to, from, next) => {
     const authenticationStore = useAuthenticationStore();
 
+    await msalInstance.initialize();
+
     // Login with Azure AD
     const loggedIn = await msalInstance.login();
     if (!loggedIn) {
