@@ -29,6 +29,28 @@ module.exports = {
         ],
         semi: ["warn", "always"],
         "vue/no-v-for-template-key": "off",
+        "vue/attributes-order": [
+            "error",
+            {
+                order: [
+                    "DEFINITION",
+                    "CONDITIONALS",
+                    "LIST_RENDERING",
+                    "UNIQUE",
+                    "RENDER_MODIFIERS",
+                    "TWO_WAY_BINDING",
+                    "SLOT",
+                    "CONTENT",
+                    "OTHER_DIRECTIVES",
+                    "GLOBAL",
+                    "ATTR_DYNAMIC",
+                    "ATTR_STATIC",
+                    "ATTR_SHORTHAND_BOOL",
+                    "EVENTS",
+                ],
+                alphabetical: true,
+            },
+        ],
         "comma-dangle": ["warn", "always-multiline"],
         "@typescript-eslint/explicit-function-return-type": "warn",
         "@typescript-eslint/member-delimiter-style": [
