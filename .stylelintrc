@@ -8,8 +8,5 @@
                 "unit-allowed-list": ["%", "deg", "em", "fr", "px", "s", "vh", "vw"]
             }
         }
-    ],
-    "rules": {
-        "indentation": 4
-    }
+    ]
 }
