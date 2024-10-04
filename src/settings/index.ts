@@ -13,4 +13,7 @@ export const settings = {
     webApi: {
         baseUrl: import.meta.env.VITE_APP_WEB_API_BASE_URL as string,
     },
+    appInsights: {
+        connectionString: import.meta.env.VITE_APP_APPINSIGHTS_CONNECTION_STRING as string,
+    },
 };
