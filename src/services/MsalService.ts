@@ -54,8 +54,7 @@ const msalConfig: msal.Configuration = {
     },
 };
 
-const scopes = ["email", `api://${settings.azureAd.backClientId}/access_as_user`];
-
+const scopes = settings.azureAd.scopes;
 const msalInstance = new MsalService(msalConfig);
 
 export { scopes, msalInstance };
