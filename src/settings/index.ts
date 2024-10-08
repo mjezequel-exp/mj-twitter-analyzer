@@ -1,8 +1,7 @@
 export const settings = {
     environment: import.meta.env.VITE_APP_ENV as string,
     azureAd: {
-        frontClientId: import.meta.env.VITE_APP_AZURE_AD_FRONT_CLIENTID as string,
-        backClientId: import.meta.env.VITE_APP_AZURE_AD_BACK_CLIENTID as string,
+        clientId: import.meta.env.VITE_APP_AZURE_AD_CLIENTID as string,
         tenantId: import.meta.env.VITE_APP_AZURE_AD_TENANTID as string,
         scopes: (import.meta.env.VITE_APP_AZURE_AD_SCOPES as string).split(" "),
         instance: import.meta.env.VITE_APP_AZURE_AD_INSTANCE as string,

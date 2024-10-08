@@ -43,7 +43,7 @@ export class MsalService extends msal.PublicClientApplication {
 
 const msalConfig: msal.Configuration = {
     auth: {
-        clientId: settings.azureAd.frontClientId,
+        clientId: settings.azureAd.clientId,
         authority: `${settings.azureAd.instance}/${settings.azureAd.tenantId}/`,
         redirectUri: `${window.location.origin}${settings.azureAd.callbackPath}`,
         navigateToLoginRequestUrl: true,

@@ -29,14 +29,15 @@ Les différentes sources sont chargées dans un ordre prédéfinie, si une confi
 
 ## Configurations utilisées
 
-| Clé                                       | Type   | Secret | Localisation | Utilisation                                                             | Note                                                                     |
-| ----------------------------------------- | ------ | ------ | ------------ | ----------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| VITE_APP_ENV                              | string |        | File         | Environnement sous lequel s'exécute l'application                       | Development, Staging, Production                                         |
-| VITE_APP_APP_INSIGHTS_INSTRUMENTATION_KEY | string |        | File         | Clé de connexion à Application Insights                                 | Ne pas mettre dans .env.development, pour ne pas envoyer les logs locaux |
-| VITE_APP_AZURE_AD_CALLBACKPATH            | string |        | File         | Chemin vers lequel Azure AD redirige après une authentification réussie |                                                                          |
-| VITE_APP_AZURE_AD_CLIENTID                | string |        | File         | Client Id Azure AD utilisé pour l'authentification                      |                                                                          |
-| VITE_APP_AZURE_AD_INSTANCE                | string |        | File         | Url de connection de Azure AD                                           |                                                                          |
-| VITE_APP_AZURE_AD_TENANTID                | string |        | File         | Id du tenant Azure utilisé pour l'authentification                      |                                                                          |
+| Clé                                    | Type   | Secret | Localisation | Utilisation                                                             | Note                                                                     |
+| -------------------------------------- | ------ | ------ | ------------ | ----------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| VITE_APP_ENV                           | string |        | File         | Environnement sous lequel s'exécute l'application                       | Development, Staging, Production                                         |
+| VITE_APP_APPINSIGHTS_CONNECTION_STRING | string |        | File         | Chaine de connexion à Application Insights                              | Ne pas mettre dans .env.development, pour ne pas envoyer les logs locaux |
+| VITE_APP_AZURE_AD_CALLBACKPATH         | string |        | File         | Chemin vers lequel Azure AD redirige après une authentification réussie |                                                                          |
+| VITE_APP_AZURE_AD_CLIENTID             | string |        | File         | Client Id Azure AD utilisé pour l'authentification                      |                                                                          |
+| VITE_APP_AZURE_AD_INSTANCE             | string |        | File         | Url de connection de Azure AD                                           |                                                                          |
+| VITE_APP_AZURE_AD_TENANTID             | string |        | File         | Id du tenant Azure utilisé pour l'authentification                      |                                                                          |
+| VITE_APP_AZURE_AD_SCOPES               | string |        | File         | Scopes de permission utilisés pour l'authentification Azure AD          | Séparer les scopes par un espace                                         |
 
 # Développement en local
 

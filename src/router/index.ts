@@ -7,14 +7,11 @@ const router = createRouter({
     routes: [
         {
             path: "/",
-            component: (): any => import("@/views/LayoutView.vue"),
-            children: [
-                {
-                    path: "",
-                    name: RouteNames.home,
-                    component: (): any => import("@/views/HomeView.vue"),
-                },
-            ],
+            name: RouteNames.home,
+            component: (): any => import("@/views/HomeView.vue"),
+            meta: {
+                requiresAuth: true,
+            },
         },
         {
             path: "/auth",

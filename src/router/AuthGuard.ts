@@ -4,6 +4,10 @@ import { useAuthenticationStore } from "@/stores";
 import { RouteNames } from "./RouteNames";
 
 export const authGuard: NavigationGuard = async (to, from, next) => {
+    if (!to.meta.requiresAuth) {
+        return next();
+    }
+
     const authenticationStore = useAuthenticationStore();
 
     await msalInstance.initialize();
