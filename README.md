@@ -39,31 +39,6 @@ Les différentes sources sont chargées dans un ordre prédéfinie, si une confi
 | VITE_APP_AZURE_AD_TENANTID             | string |        | File         | Id du tenant Azure utilisé pour l'authentification                      |                                                                          |
 | VITE_APP_AZURE_AD_SCOPES               | string |        | File         | Scopes de permission utilisés pour l'authentification Azure AD          | Séparer les scopes par un espace                                         |
 
-# Développement en local
-
-## Installer le certificat de développement
-
-Pour développer en local dans les mêmes conditions que la production, il est recommandé d'installer un certificat pour HTTPS.  
-Vous pouvez créer et valider simplement un certificat de développement local en utilisant l'outil `dotnet dev-certs` en suivant les étapes ci-dessous :
-
-Installer l'outil `dev-certs` sur votre machine
-
-```shell
-dotnet tool install -g dotnet-dev-certs
-```
-
-> **Note :** Cette commande installe l'outil globalement sur votre machine. Vous n'aurez pas besoin de relancer cette commande la prochaine fois.
-
-Ajouter et valider un certificat local
-
-```shell
-dotnet dev-certs https -t -ep "<project-path>\localhost.pfx" -p "localhost"
-```
-
-> **Note :** Ce certificat n'est pas lié au projet en cours, il peut être utilisé pour **n'importe quel** site hébergé localement.
-
-> **Note :** Veillez à bien utiliser l'adresse https://localhost:44340 lorsque vous développez, sinon vous aurez une erreur concernant le certificat.
-
 ## Installer les dépendances
 
 ```
