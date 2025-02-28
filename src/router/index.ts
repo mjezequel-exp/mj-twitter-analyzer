@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import { authGuard } from "./AuthGuard";
+import { registerAuthGuard } from "./AuthGuard";
 import { RouteNames } from "./RouteNames";
 
 const router = createRouter({
@@ -9,6 +9,17 @@ const router = createRouter({
             path: "/",
             name: RouteNames.home,
             component: (): any => import("@/views/HomeView.vue"),
+        },
+        {
+            path: "/protected",
+            component: (): any => import("@/views/LayoutView.vue"),
+            children: [
+                {
+                    path: "",
+                    name: RouteNames.protectedPage,
+                    component: (): any => import("@/views/ProtectedView.vue"),
+                },
+            ],
             meta: {
                 requiresAuth: true,
             },
@@ -30,6 +41,6 @@ const router = createRouter({
     ],
 });
 
-router.beforeEach(authGuard);
+registerAuthGuard(router);
 
 export default router;

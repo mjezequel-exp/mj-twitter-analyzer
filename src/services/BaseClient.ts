@@ -1,6 +1,6 @@
+import { msalInstance, scopes } from "@/authConfig";
 import { settings } from "@/settings";
 import axios, { AxiosError } from "axios";
-import { scopes, msalInstance } from "./MsalService";
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from "axios";
 
 export class BaseClient {
@@ -123,7 +123,7 @@ export class BaseClient {
     }
 
     private async requestInterceptor(request: InternalAxiosRequestConfig): Promise<InternalAxiosRequestConfig> {
-        const accessToken = await msalInstance.getAccessToken(scopes);
+        const accessToken = await msalInstance.acquireTokenSilent({ scopes });
 
         // Add Authorization token
         if (accessToken != null && request.headers) {

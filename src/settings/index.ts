@@ -7,9 +7,6 @@ export const settings = {
         instance: import.meta.env.VITE_APP_AZURE_AD_INSTANCE as string,
         callbackPath: import.meta.env.VITE_APP_AZURE_AD_CALLBACKPATH as string,
     },
-    graphApi: {
-        baseUrl: import.meta.env.VITE_APP_GRAPH_API_BASE_URL as string,
-    },
     webApi: {
         baseUrl: import.meta.env.VITE_APP_WEB_API_BASE_URL as string,
     },

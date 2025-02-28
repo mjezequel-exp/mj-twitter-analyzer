@@ -1,12 +1,25 @@
-import { createApp } from "vue";
+import "./assets/main.css";
+
 import { createPinia } from "pinia";
+import { createApp } from "vue";
 
 import App from "./App.vue";
 import router from "./router";
 
+import { msalInstance } from "./authConfig";
 import { AppInsightsPlugin, appInsightsOptions } from "./plugins/appInsightsPlugin";
 import { msalPlugin } from "./plugins/msalPlugin";
-import { msalInstance } from "./services/MsalService";
+import { MsalNavigationClient } from "./router/MsalNavigationClient";
+
+// Provide a custom navigation client to MSAL to enable client-side routing
+const navigationClient = new MsalNavigationClient(router);
+msalInstance.setNavigationClient(navigationClient);
+
+// Set first MSAL account as active account
+const accounts = msalInstance.getAllAccounts();
+if (accounts.length > 0) {
+    msalInstance.setActiveAccount(accounts[0]);
+}
 
 const app = createApp(App);
 

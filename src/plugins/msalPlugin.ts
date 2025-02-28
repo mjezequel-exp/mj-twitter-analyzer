@@ -1,7 +1,5 @@
-import { reactive } from "vue";
-import { EventMessageUtils, EventType, InteractionStatus, PublicClientApplication } from "@azure/msal-browser";
-import type { App } from "vue";
-import type { AccountInfo, EventMessage } from "@azure/msal-browser";
+import { type App, reactive } from "vue";
+import { type EventMessage, EventMessageUtils, EventType, InteractionStatus, PublicClientApplication, type AccountInfo } from "@azure/msal-browser";
 
 type AccountIdentifiers = Partial<Pick<AccountInfo, "homeAccountId" | "localAccountId" | "username">>;
 
@@ -33,9 +31,13 @@ export const msalPlugin = {
         const inProgress = InteractionStatus.Startup;
         const accounts = msalInstance.getAllAccounts();
 
-        const state = reactive({
+        const state = reactive<{
+            instance: PublicClientApplication;
+            inProgress: InteractionStatus;
+            accounts: AccountInfo[];
+        }>({
             instance: msalInstance,
-            inProgress: inProgress as InteractionStatus,
+            inProgress: inProgress,
             accounts: accounts,
         });
 
