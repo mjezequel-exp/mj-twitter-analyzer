@@ -8,7 +8,7 @@ Les outils suivants sont nécessaires pour ce projet :
 
 | Techno  | Version      |
 | ------- | ------------ |
-| Node.js | 20.x minimum |
+| Node.js | 22.x minimum |
 | npm     | 10.x minimum |
 
 > **Note :** Si vous avez des projets qui dépendent de différentes versions de Node.js, vous pouvez utiliser [nvm](https://github.com/creationix/nvm) ou [nvm-windows](https://github.com/coreybutler/nvm-windows) pour installer plusieurs versions côte à côte.
