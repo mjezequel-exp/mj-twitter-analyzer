@@ -7,6 +7,12 @@ export const settings = {
         instance: import.meta.env.VITE_APP_AZURE_AD_INSTANCE as string,
         callbackPath: import.meta.env.VITE_APP_AZURE_AD_CALLBACKPATH as string,
     },
+    azureOpenAI: {
+        endpoint: import.meta.env.VITE_AZURE_OPENAI_ENDPOINT as string,
+        apiKey: import.meta.env.VITE_AZURE_OPENAI_KEY as string,
+        deployment: import.meta.env.VITE_AZURE_OPENAI_DEPLOYMENT as string,
+        apiVersion: import.meta.env.VITE_AZURE_OPENAI_VERSION as string,
+    },
     webApi: {
         baseUrl: import.meta.env.VITE_APP_WEB_API_BASE_URL as string,
     },

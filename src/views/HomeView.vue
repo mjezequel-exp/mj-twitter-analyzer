@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TwitterAnalyzer2 from "@/components/TwitterAnalyzer2.vue";
+import TwitterAnalyzer from "@/components/TwitterAnalyzer.vue";
 import { useMsal } from "@/composables/useMsal";
 
 const { isAuthenticated, accounts, login, logout } = useMsal();
@@ -7,7 +7,7 @@ const { isAuthenticated, accounts, login, logout } = useMsal();
 
 <template>
     <main>
-        <TwitterAnalyzer2 />
+        <TwitterAnalyzer />
     </main>
 </template>
 
