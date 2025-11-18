@@ -1,35 +1,13 @@
 <script setup lang="ts">
-import TheWelcome from "@/components/TheWelcome.vue";
-import HelloWorld from "@/components/HelloWorld.vue";
+import TwitterAnalyzer2 from "@/components/TwitterAnalyzer2.vue";
 import { useMsal } from "@/composables/useMsal";
-import { RouteNames } from "@/router/RouteNames";
-import IconVue from "@/components/welcome/icons/IconVue.vue";
 
 const { isAuthenticated, accounts, login, logout } = useMsal();
 </script>
 
 <template>
-    <header>
-        <IconVue />
-
-        <div class="wrapper">
-            <HelloWorld msg="You did it!" text="You've successfully created a project with our template. What's next?" />
-
-            <div v-if="isAuthenticated">
-                <h3>
-                    <p>Well done {{ accounts[0].name }}, you are authenticated!</p>
-                    <p>You can access a <RouterLink :to="{ name: RouteNames.protectedPage }">protected page</RouterLink> or you can <a type="button" @click="logout()">logout</a>.</p>
-                </h3>
-            </div>
-            <div v-else>
-                <h3>You can <a type="button" @click="login()">try to authenticate</a> to ensure authentication is configured correctly.</h3>
-            </div>
-            <p>You can remove the <code>src/components/welcome</code> folder and all code from this view to start fresh!</p>
-        </div>
-    </header>
-
     <main>
-        <TheWelcome />
+        <TwitterAnalyzer2 />
     </main>
 </template>
 
@@ -102,10 +80,10 @@ body {
     line-height: 1.6;
     color: var(--color-text);
     background: var(--color-background);
+    text-rendering: optimizelegibility;
     transition:
         color 0.5s,
         background-color 0.5s;
-    text-rendering: optimizelegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -135,21 +113,21 @@ a,
     }
 }
 
-@media (width >= 1024px) {
-    body {
-        display: flex;
-        place-items: center;
-    }
+// @media (width >= 1024px) {
+//     body {
+//         display: flex;
+//         place-items: center;
+//     }
 
-    #app {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        column-gap: 5em;
-        padding: 0 2em;
-    }
+//     #app {
+//         display: grid;
+//         grid-template-columns: 1fr 1fr;
+//         column-gap: 5em;
+//         padding: 0 2em;
+//     }
 
-    .wrapper {
-        text-align: left;
-    }
-}
+//     .wrapper {
+//         text-align: left;
+//     }
+// }
 </style>

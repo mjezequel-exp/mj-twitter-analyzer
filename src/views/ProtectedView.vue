@@ -1,9 +1,8 @@
 <script lang="ts" setup>
-import { RouteNames } from "@/router/RouteNames";
 import HelloWorld from "@/components/HelloWorld.vue";
-import { computed } from "vue";
 import { useMsal } from "@/composables/useMsal";
-import IconVue from "@/components/welcome/icons/IconVue.vue";
+import { RouteNames } from "@/router/RouteNames";
+import { computed } from "vue";
 
 const { accounts } = useMsal();
 
