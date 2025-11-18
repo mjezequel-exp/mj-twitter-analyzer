@@ -66,10 +66,10 @@ body {
     line-height: 1.6;
     color: var(--color-text);
     background: var(--color-background);
+    text-rendering: optimizelegibility;
     transition:
         color 0.5s,
         background-color 0.5s;
-    text-rendering: optimizelegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }

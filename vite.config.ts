@@ -2,6 +2,7 @@ import child_process from "node:child_process";
 import fs from "node:fs";
 import { fileURLToPath, URL } from "node:url";
 
+import { quasar, transformAssetUrls } from "@quasar/vite-plugin";
 import basicSsl from "@vitejs/plugin-basic-ssl";
 import vue from "@vitejs/plugin-vue";
 import { defineConfig } from "vite";
@@ -19,7 +20,15 @@ export default defineConfig(({ command }) => {
     }
 
     return {
-        plugins: [vue(), basicSsl()],
+        plugins: [
+            vue({
+                template: { transformAssetUrls },
+            }),
+            quasar({
+                sassVariables: "@/quasar-variables.sass",
+            }),
+            basicSsl(),
+        ],
         resolve: {
             alias: {
                 "@": fileURLToPath(new URL("./src", import.meta.url)),
