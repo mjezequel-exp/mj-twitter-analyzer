@@ -9,6 +9,7 @@ import router from "./router";
 import { Notify, Quasar } from "quasar";
 
 // Import icon libraries
+import "@quasar/extras/material-icons-outlined/material-icons-outlined.css";
 import "@quasar/extras/material-icons/material-icons.css";
 
 // Import Quasar css

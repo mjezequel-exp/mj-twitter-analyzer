@@ -110,6 +110,13 @@ const getToxicityColor = (score: number): string => {
 };
 
 /**
+ * Rafraîchit la page
+ */
+const refreshPage = () => {
+    window.location.reload();
+};
+
+/**
  * Reset l'analyse
  */
 const resetAnalysis = () => {
@@ -130,7 +137,7 @@ const resetAnalysis = () => {
             <q-card class="q-pa-md q-mb-md" flat>
                 <div class="row items-center justify-between">
                     <div class="text-h4 text-grey-8 text-weight-bold row items-center">
-                        <q-icon name="home" class="q-mr-md" />
+                        <q-btn @click="refreshPage()" flat round icon="o_home" color="grey-8" size="md" class="q-mr-md" />
                         <span class="gt-sm sr-only">Analyseur de Messages Twitter</span>
                     </div>
                     <div v-if="isAuthenticated" class="row items-center q-gutter-md">
@@ -148,7 +155,7 @@ const resetAnalysis = () => {
                 <!-- Carte de saisie du message -->
                 <q-card class="q-pa-xl q-mb-md">
                     <div class="row items-center q-mb-md">
-                        <q-icon name="chat" color="blue" size="24px" class="q-mr-md" />
+                        <q-icon name="o_chat" color="blue" size="24px" class="q-mr-md" />
                         <div class="text-h5 text-weight-bold text-grey-8">Message à analyser</div>
                     </div>
 
@@ -186,7 +193,10 @@ const resetAnalysis = () => {
                 <!-- Carte des résultats de l'analyse (affichée seulement après analyse) -->
                 <transition appear enter-active-class="animated fade-in" leave-active-class="animated fade-out">
                     <q-card v-if="analysis" class="q-pa-xl">
-                        <div class="text-h5 text-weight-bold q-mb-md text-left text-grey-8">📊 Résultats de l'analyse</div>
+                        <div class="row items-center q-mb-md">
+                            <q-icon name="o_equalizer" color="blue" size="24px" class="q-mr-md" />
+                            <div class="text-h5 text-weight-bold text-grey-8">Résultats de l'analyse</div>
+                        </div>
                         <!-- Métriques -->
                         <div class="column q-gutter-lg q-mb-md">
                             <!-- Crédibilité -->
@@ -194,7 +204,7 @@ const resetAnalysis = () => {
                                 <q-card-section class="q-pa-lg">
                                     <div class="row items-start">
                                         <div class="col-auto q-mr-lg">
-                                            <q-icon name="shield" color="blue" size="32px" />
+                                            <q-icon name="o_shield" color="positive" size="32px" />
                                         </div>
                                         <div class="col">
                                             <div class="text-h5 text-weight-medium text-grey-8 q-mb-sm">Crédibilité</div>
@@ -222,7 +232,7 @@ const resetAnalysis = () => {
                                 <q-card-section class="q-pa-lg">
                                     <div class="row items-start">
                                         <div class="col-auto q-mr-lg">
-                                            <q-icon name="verified" color="purple" size="32px" />
+                                            <q-icon name="o_verified" color="purple" size="32px" />
                                         </div>
                                         <div class="col">
                                             <div class="text-h5 text-weight-medium text-grey-8 q-mb-sm">Confiance</div>
@@ -247,7 +257,7 @@ const resetAnalysis = () => {
                                 <q-card-section class="q-pa-lg">
                                     <div class="row items-start">
                                         <div class="col-auto q-mr-lg">
-                                            <q-icon name="warning" color="red" size="32px" />
+                                            <q-icon name="o_report" color="warning" size="32px" />
                                         </div>
                                         <div class="col">
                                             <div class="text-h5 text-weight-medium text-grey-8 q-mb-sm">Toxicité</div>
@@ -279,7 +289,7 @@ const resetAnalysis = () => {
                                 <q-card-section class="q-pa-lg">
                                     <div class="row items-start">
                                         <div class="col-auto q-mr-lg">
-                                            <q-icon name="sentiment_satisfied" color="pink" size="32px" />
+                                            <q-icon name="o_sentiment_satisfied" color="pink" size="32px" />
                                         </div>
                                         <div class="col">
                                             <div class="text-h5 text-weight-medium text-grey-8 q-mb-sm">Sentiment</div>
@@ -306,7 +316,10 @@ const resetAnalysis = () => {
                 <!-- Carte pour la réponse suggérée -->
                 <transition appear enter-active-class="animated fade-in" leave-active-class="animated fade-out">
                     <q-card v-if="analysis" flat bordered class="q-pa-xl q-mt-md">
-                        <div class="text-h5 text-weight-bold q-mb-md text-left text-grey-8">💬 Réponse suggérée</div>
+                        <div class="row items-center q-mb-md">
+                            <q-icon name="o_comment" color="blue" size="24px" class="q-mr-md" />
+                            <div class="text-h5 text-weight-bold text-grey-8">Réponse suggérée</div>
+                        </div>
 
                         <div class="text-body1 text-grey-7 q-mb-lg q-pa-lg bg-grey-1 rounded-borders" style="font-style: italic">"{{ analysis.suggestedResponse }}"</div>
 
@@ -338,10 +351,10 @@ const resetAnalysis = () => {
             <!-- Message pour utilisateurs non authentifiés -->
             <div v-else>
                 <q-card class="q-pa-xl text-center">
-                    <q-icon name="lock" size="64px" color="grey-5" class="q-mb-md" />
+                    <q-icon name="o_lock" size="64px" color="grey-5" class="q-mb-md" />
                     <div class="text-h5 text-grey-7 q-mb-md">Authentification requise</div>
                     <div class="text-body1 text-grey-6 q-mb-xl">Veuillez vous connecter pour accéder à l'analyseur de messages Twitter.</div>
-                    <q-btn @click="login()" color="primary" label="Se connecter avec Microsoft" icon="login" no-caps size="lg" class="q-px-xl" />
+                    <q-btn @click="login()" color="primary" label="Se connecter avec Microsoft" icon="o_login" no-caps size="lg" class="q-px-xl" />
                 </q-card>
             </div>
         </div>
