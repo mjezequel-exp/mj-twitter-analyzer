@@ -1,7 +1,7 @@
 import { msalInstance, scopes } from "@/authConfig";
 import { settings } from "@/settings";
-import axios, { AxiosError } from "axios";
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from "axios";
+import axios, { AxiosError } from "axios";
 
 export class BaseClient {
     protected apiClient: AxiosInstance;
@@ -158,7 +158,19 @@ export class BaseClient {
     private async errorResponseInterceptor(error: AxiosError): Promise<AxiosError> {
         // If the user is unauthenticated, retry login
         if (error.response?.status === 401) {
-            await msalInstance.getAccessToken(scopes);
+            try {
+                const accounts = msalInstance.getAllAccounts();
+                if (accounts.length > 0) {
+                    await msalInstance.acquireTokenSilent({
+                        scopes: scopes,
+                        account: accounts[0],
+                    });
+                } else {
+                    await msalInstance.loginRedirect({ scopes: scopes });
+                }
+            } catch (loginError) {
+                console.error("Failed to refresh token:", loginError);
+            }
         }
 
         return Promise.reject(error);
