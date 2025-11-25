@@ -4,9 +4,22 @@ Ce guide vous accompagne pour déployer l'environnement de développement sur Az
 
 ## 📋 Prérequis
 
-1. **Compte Azure** avec un abonnement actif
-2. **Repository GitHub** (déjà configuré)
-3. **Workflow GitHub Actions** configuré (`azure-static-web-apps-dev.yml`)
+1. **Node.js 22** ou supérieur (configuré avec `.nvmrc` et `.node-version`)
+2. **npm 10** ou supérieur (spécifié dans `package.json` engines)
+3. **Compte Azure** avec un abonnement actif
+4. **Repository GitHub** (déjà configuré)
+5. **Workflow GitHub Actions** configuré (`azure-static-web-apps-dev.yml`)
+
+**🔧 Vérification locale :**
+
+```bash
+# Utiliser la bonne version Node.js
+nvm use  # utilise la version dans .nvmrc (22)
+
+# Vérifier les versions
+node --version  # doit afficher v22.x.x
+npm --version   # doit afficher 10.x.x ou supérieur
+```
 
 ## 🔧 Étape 1 : Créer Azure Static Web App
 
@@ -36,6 +49,7 @@ Ces variables sont **déjà configurées** dans le fichier `.env.development` :
 
 ```env
 VITE_APP_ENV=Development
+VITE_APP_AZURE_AD_CLIENTID=aefb238c-639f-4279-94cd-e05a08511f40
 VITE_APP_AZURE_AD_TENANTID=868b0608-0093-46a4-8c06-369376d02e93
 VITE_APP_AZURE_AD_SCOPES=openid profile
 VITE_AZURE_OPENAI_ENDPOINT=https://mj-twitter-analyzer.openai.azure.com/
@@ -117,6 +131,7 @@ Une fois le déploiement terminé :
 
 ```env
 VITE_APP_ENV=Development
+VITE_APP_AZURE_AD_CLIENTID=aefb238c-639f-4279-94cd-e05a08511f40
 VITE_APP_AZURE_AD_TENANTID=868b0608-0093-46a4-8c06-369376d02e93
 VITE_APP_AZURE_AD_SCOPES=openid profile
 VITE_AZURE_OPENAI_ENDPOINT=https://mj-twitter-analyzer.openai.azure.com/

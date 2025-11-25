@@ -1,5 +1,12 @@
 # 🚀 Déploiement rapide - Environnement DEV
 
+## 📋 Prérequis
+
+- **Node.js 22** ou supérieur (configuré avec `.nvmrc`)
+- **npm 10** ou supérieur
+- **Compte Azure** avec abonnement actif
+- **Repository GitHub** configuré
+
 ## ⚡ Déploiement en 3 étapes
 
 ### 1️⃣ Test local
@@ -38,11 +45,13 @@ AZURE_STATIC_WEB_APPS_API_TOKEN_DEV=[TOKEN_AZURE_STATIC_WEB_APP]
 
 **Variables publiques déjà configurées** dans `.env.development`:
 
-- ✅ `VITE_APP_AZURE_AD_TENANTID`
-- ✅ `VITE_AZURE_OPENAI_ENDPOINT`
-- ✅ `VITE_AZURE_OPENAI_DEPLOYMENT`
-- ✅ `VITE_APP_AZURE_AD_SCOPES`
-- ✅ `VITE_AZURE_OPENAI_VERSION`
+- ✅ `VITE_APP_ENV=Development`
+- ✅ `VITE_APP_AZURE_AD_CLIENTID=aefb238c-639f-4279-94cd-e05a08511f40`
+- ✅ `VITE_APP_AZURE_AD_TENANTID=868b0608-0093-46a4-8c06-369376d02e93`
+- ✅ `VITE_APP_AZURE_AD_SCOPES=openid profile`
+- ✅ `VITE_AZURE_OPENAI_ENDPOINT=https://mj-twitter-analyzer.openai.azure.com/`
+- ✅ `VITE_AZURE_OPENAI_DEPLOYMENT=gpt-4o`
+- ✅ `VITE_AZURE_OPENAI_VERSION=2025-01-01-preview`
 
 ## 🎯 Déploiement automatique
 
