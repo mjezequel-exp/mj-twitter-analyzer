@@ -47,7 +47,7 @@ VITE_AZURE_OPENAI_VERSION=2025-01-01-preview
 
 Allez dans votre repository GitHub > **Settings** > **Secrets and variables** > **Actions**
 
-**Ajoutez UNIQUEMENT ces 2 secrets sensibles :**
+**Ajoutez ces 3 secrets :**
 
 ```
 VITE_AZURE_OPENAI_KEY=<votre_cle_azure_openai>
@@ -55,7 +55,14 @@ VITE_APP_APPINSIGHTS_CONNECTION_STRING=<votre_connection_string_appinsights>
 AZURE_STATIC_WEB_APPS_API_TOKEN_DEV=<token_de_votre_static_web_app>
 ```
 
-**Note** : Le token `AZURE_STATIC_WEB_APPS_API_TOKEN_DEV` sera généré automatiquement lors de la création de votre Static Web App.
+**📋 Récupération du token Azure Static Web App :**
+
+1. **Azure Portal** → votre Static Web App
+2. Menu **"Manage deployment token"**
+3. **Copiez le token** affiché
+4. **Ajoutez-le comme secret GitHub** avec le nom exact `AZURE_STATIC_WEB_APPS_API_TOKEN_DEV`
+
+**⚠️ IMPORTANT** : Sans ce token, le déploiement échoue avec l'erreur `deployment_token was not provided`.
 
 ## 🚀 Étape 3 : Workflow GitHub Actions
 
@@ -127,7 +134,7 @@ Cette approche **hybride** optimise la sécurité en ne gardant que les secrets 
 ## 📋 Checklist de déploiement
 
 - [ ] Azure Static Web App créée
-- [ ] 2 secrets GitHub configurés (OPENAI_KEY + APPINSIGHTS_CONNECTION_STRING)
+- [ ] 3 secrets GitHub configurés (OPENAI_KEY + APPINSIGHTS_CONNECTION_STRING + AZURE_TOKEN)
 - [ ] Token Azure auto-généré récupéré
 - [ ] Code pushé sur main
 - [ ] Workflow GitHub Actions exécuté avec succès

@@ -18,7 +18,7 @@ npm run preview
 - **App location**: `/`
 - **Output location**: `dist`
 
-### 3️⃣ Configurer les secrets GitHub (seulement 2!)
+### 3️⃣ Configurer les secrets GitHub (3 secrets)
 
 Allez dans **Settings** → **Secrets and variables** → **Actions**
 
@@ -27,7 +27,14 @@ Allez dans **Settings** → **Secrets and variables** → **Actions**
 ```
 VITE_AZURE_OPENAI_KEY=[VOTRE_CLE_API_AZURE_OPENAI]
 VITE_APP_APPINSIGHTS_CONNECTION_STRING=[VOTRE_CONNECTION_STRING_APPINSIGHTS]
+AZURE_STATIC_WEB_APPS_API_TOKEN_DEV=[TOKEN_AZURE_STATIC_WEB_APP]
 ```
+
+**📋 Comment récupérer le token Azure :**
+
+1. Azure Portal → votre Static Web App → **"Manage deployment token"**
+2. Copiez le token affiché
+3. Ajoutez-le comme secret GitHub avec le nom exact ci-dessus
 
 **Variables publiques déjà configurées** dans `.env.development`:
 
@@ -54,9 +61,10 @@ VITE_APP_APPINSIGHTS_CONNECTION_STRING=[VOTRE_CONNECTION_STRING_APPINSIGHTS]
 - ✅ **Build testé** et fonctionnel
 - ✅ **Configuration hybride** optimisée (secrets minimaux)
 - ✅ **Workflow GitHub** configuré (`azure-static-web-apps-dev.yml`)
-- ⚠️ **2 secrets GitHub** seulement à configurer manuellement
-- 🔐 **Token Azure** auto-généré lors de la création de la Static Web App
+- ⚠️ **3 secrets GitHub** à configurer manuellement
+- 🔐 **Token Azure** à récupérer depuis Azure Portal après création de la Static Web App
+- ❌ **ERREUR COMMUNE** : Oublier le token Azure → échec du déploiement
 
 ---
 
-**🎉 Configuration optimisée - Seulement 2 secrets à gérer !**
+**🎉 Configuration optimisée - 3 secrets stratégiques à gérer !**
